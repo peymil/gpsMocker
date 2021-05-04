@@ -34,13 +34,13 @@ type coordinate = {
 export class gpsMocker {
 	type: coordinateType = "DD";
 	inputType: inputType = "KM";
-	// coordinate: number;
+	coordinate: coordinate;
 	constructor(
-		// coordinate: number,
+		coordinate: number,
 		type?: coordinateType,
 		inputType?: inputType
 	) {
-		// this.coordinate = coordinate;
+		this.coordinate = coordinate;
 		if (type) this.type = type;
 		if (inputType) this.inputType = inputType;
 	}
@@ -52,6 +52,19 @@ export class gpsMocker {
 		const x = parseFloat(Math.random().toFixed(2)) * radius;
 		const y = Math.sqrt(radius * 2 - x ** 2) * absolute;
 		console.log(x, y, radius);
+	}
+	moveLongitudePositive(coordinate: number , direction :string,min:number,max:number) {
+		const dir = direction.toUpperCase()
+		if(["N","S"].includes(dir))
+		{
+			const sign = dir = "N" ? 1 : -1
+			const 
+		}
+		if else(["N","n","S","s"].includes(direction))
+		else throw new Error()
+	}
+	moveLongitudeNegative() {
+
 	}
 }
 console.log(new gpsMocker().move(5, 25));
