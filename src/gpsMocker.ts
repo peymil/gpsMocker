@@ -34,13 +34,13 @@ type coordinate = {
 export class gpsMocker {
 	type: coordinateType = "DD";
 	inputType: inputType = "KM";
-	// coordinate: number;
+	coordinate: coordinate;
 	constructor(
-		// coordinate: number,
+		coordinate: coordinate,
 		type?: coordinateType,
 		inputType?: inputType
 	) {
-		// this.coordinate = coordinate;
+		this.coordinate = coordinate;
 		if (type) this.type = type;
 		if (inputType) this.inputType = inputType;
 	}
@@ -50,8 +50,11 @@ export class gpsMocker {
 			parseFloat(Math.random().toFixed(2)) * (maxRadius - minRadius) +
 			minRadius;
 		const x = parseFloat(Math.random().toFixed(2)) * radius;
-		const y = Math.sqrt(radius * 2 - x ** 2) * absolute;
-		console.log(x, y, radius);
+		const y = Math.sqrt(radius ** 2 - x ** 2) * absolute;
+		this.coordinate.x += x;
+		this.coordinate.y += y;
 	}
 }
-console.log(new gpsMocker().move(5, 25));
+const s = new gpsMocker({ x: 18.134, y: 15.564 });
+s.move(5, 25);
+console.log(s.coordinate.x, s.coordinate.y);
