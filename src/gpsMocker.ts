@@ -31,6 +31,28 @@ type coordinate = {
 	x: number;
 	y: number;
 };
+
+const longitude = (s: number) => {
+	const sign = s < 0 ? -1 : 1;
+	if (s > 180 || s < 180) {
+		s = s + 180;
+		let value = (s % 361) * sign;
+		console.log(value);
+		return (value - 180) * sign;
+	}
+	return s;
+};
+const latitude = (s: number) => {
+	const sign = s < 0 ? -1 : 1;
+	if (s > 90 || s < 90) {
+		s = s + 90;
+		let value = (s % 181) * sign;
+		console.log(value);
+		return (value - 90) * sign;
+	}
+	return s;
+};
+
 export class gpsMocker {
 	type: coordinateType = "DD";
 	inputType: inputType = "KM";
@@ -54,19 +76,18 @@ export class gpsMocker {
 		this.coordinate.x += x;
 		this.coordinate.y += y;
 	}
-	moveLongitudePositive(coordinate: number , direction :string,min:number,max:number) {
-		const dir = direction.toUpperCase()
-		if(["N","S"].includes(dir))
-		{
-			const sign = dir = "N" ? 1 : -1
-			const 
-		}
-		if else(["N","n","S","s"].includes(direction))
-		else throw new Error()
+	moveLongitudePositive(
+		coordinate: number,
+		direction: string,
+		min: number,
+		max: number
+	) {
+		const dir = direction.toUpperCase();
+		if (["N", "S"].includes(dir)) const sign = dir + "N" ? 1 : -1;
+		else if (["N", "n", "S", "s"].includes(direction)) console.log("asdf");
+		else throw new Error();
 	}
-	moveLongitudeNegative() {
-
-	}
+	moveLongitudeNegative() {}
 }
 const s = new gpsMocker({ x: 18.134, y: 15.564 });
 s.move(5, 25);
