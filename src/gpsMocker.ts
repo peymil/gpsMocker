@@ -54,6 +54,19 @@ export class gpsMocker {
 		this.coordinate.x += x;
 		this.coordinate.y += y;
 	}
+	moveLongitudePositive(coordinate: number , direction :string,min:number,max:number) {
+		const dir = direction.toUpperCase()
+		if(["N","S"].includes(dir))
+		{
+			const sign = dir = "N" ? 1 : -1
+			const 
+		}
+		if else(["N","n","S","s"].includes(direction))
+		else throw new Error()
+	}
+	moveLongitudeNegative() {
+
+	}
 }
 const s = new gpsMocker({ x: 18.134, y: 15.564 });
 s.move(5, 25);
